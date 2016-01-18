@@ -1,0 +1,28 @@
+# Documentation: https://roots.io/trellis/docs/local-development-setup/
+wordpress_sites:
+  BLU:
+    site_hosts:
+      - manorfarm-shop.dev
+    local_path: ../site # path targeting local Bedrock site directory (relative to Ansible root)
+    site_install: true
+    site_title: MAnor Farm Shop
+    admin_user: Andrew
+    # admin_password: (defined in group_vars/development/vault.yml)
+    admin_email: a@blu.uk
+    initial_permalink_structure: /%postname%/ # applied only at time of WP install and when `site_install: true`
+    multisite:
+      enabled: false
+      subdomains: false
+    ssl:
+      enabled: false
+    cache:
+      enabled: false
+      duration: 30s
+    env:
+      disable_wp_cron: true
+      wp_home: http://manorfarm-shop.dev
+      wp_siteurl: http://manorfarm-shop.dev/wp
+      wp_env: development
+      db_name: manorfarm
+      db_user: blu
+      # db_password: (defined in group_vars/development/vault.yml)
