@@ -31,15 +31,6 @@ Vagrant.configure('2') do |config|
   config.vm.box = 'ubuntu/trusty64'
   config.ssh.forward_agent = true
 
-  #the vagrant-hostmanager plugin has a bug where ownership and permissions for the guest /etc/hosts file will be changed. This workaround changes it back:
-  config.vm.provision "fix-hostmanager-bug", type: "shell", run: "always" do |s|
-    s.inline = <<-EOT
-    restorecon /etc/hosts
-    chown root:root /etc/hosts
-    chmod 644 /etc/hosts
-    EOT
-  end
-
   # Fix for: "stdin: is not a tty"
   # https://github.com/mitchellh/vagrant/issues/1673#issuecomment-28288042
   config.ssh.shell = %{bash -c 'BASH_ENV=/etc/profile exec bash'}
