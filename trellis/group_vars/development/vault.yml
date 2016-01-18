@@ -7,7 +7,7 @@ vault_sudoer_passwords:
 
 # Variables to accompany `group_vars/development/wordpress_sites.yml`
 vault_wordpress_sites:
-  manorfarm-shop.dev:
+  manorfarm-shop:
     admin_password: oFFi85^blu
     env:
       db_password: oFFi85
